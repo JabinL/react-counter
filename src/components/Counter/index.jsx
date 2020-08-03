@@ -4,7 +4,8 @@ class Counter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 0
+            value: 0,
+            size: 0
         }
     }
     onDecrease = () => {
@@ -19,6 +20,15 @@ class Counter extends React.Component {
             })); 
         this.props.onIncrease();    
             
+    }
+    static getDerivedStateFromProps(props, state){
+        if(props.size !== state.size){
+            return{
+                size: props.size,
+                value: 0
+            }
+        }
+        return null;
     }
     render() {
         return (
