@@ -12,13 +12,13 @@ class Counter extends React.Component {
         this.setState((prevState) => ({
             value: prevState.value - 1
         }));
-        this.props.onDecrease();
+        this.props.store({ type: 'counter/decrement' })
     }
     onIncrease = () => {
         this.setState((prevState) =>({
                 value: prevState.value + 1
             })); 
-        this.props.onIncrease();    
+        this.props.store({ type: 'counter/increment' });
             
     }
     static getDerivedStateFromProps(props, state){
